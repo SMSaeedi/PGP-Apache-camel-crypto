@@ -1,0 +1,32 @@
+            if (cartItem.getProduct().getType().equals(ProductType.COFFEE))
+                drinkItems.add(cartItem);
+
+            if (drinkItems.size() >= 3) {
+                toppingBonus = true;
+                cartItem.getProduct().setId(toppingBonus().getId());
+            }
+
+            //todo: the bones with the lowest cart amount will accept and the other one will by-pass.
+
+  private Product toppingBonus() {
+        return productRepository.findAllByType(ProductType.TOPPINGS).stream().min(Comparator.comparing(Product::getPrice)).orElseThrow();
+    }
+
+--------------------------------------------
+ public BigDecimal getTotalPrice() {
+        setDescription("Your offers must be more that 12 Euro to reach 25% discount");
+        for (CartItemDto cartItemDto : items) {
+            setTotalPrice(cartItemDto.getProduct().getPrice().multiply(BigDecimal.valueOf(cartItemDto.getQuantity())));
+        }
+        return totalPrice.compareTo(BigDecimal.valueOf(12)) >= 1 ? percentage(totalPrice, BigDecimal.valueOf(25)) : totalPrice;
+    }
+
+    private BigDecimal percentage(BigDecimal base, BigDecimal pct) {
+        CartServiceImpl.discount = true;
+        setDescription("Congrats! 25% discount appended :) enjoy your coffee");
+        return totalPrice.subtract(base.multiply(pct).divide(BigDecimal.valueOf(100)));
+    }
+----------------------------------------------------------------------------------------
+    when(mock.isOk()).thenReturn(true);
+    when(mock.isOk()).thenThrow(exception);
+    doThrow(exception).when(mock).someVoidMethod();
