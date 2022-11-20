@@ -35,6 +35,17 @@ class PGPApplicationTest {
         final String in = "file:M:\\PGP-decryptFile\\pgp\\decrypt\\IN";
         final String out = "file:M:\\PGP-decryptFile\\pgp\\decrypt\\OUT";
 
+        //In case of huge file size to avoid OutOfMemory Java heap exception -->
+        camelContext.getStreamCachingStrategy().setSpoolThreshold(64 * 1024);
+        camelContext.getStreamCachingStrategy().setBufferSize(16 * 1024);
+        camelContext.setStreamCaching(true);
+
+        /*or on routes:
+        from("file:inbox")
+                .streamCaching()
+                .to("bean:foo");*/
+        // <--
+
         camelContext.addRoutes(new RouteBuilder() {
             public void configure() {
                 from(in)
