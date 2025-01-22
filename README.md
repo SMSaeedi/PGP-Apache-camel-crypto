@@ -1,7 +1,7 @@
 # PGP Crypto Service
 
 ## Description
-This is PGP Crypto Service application, a security program used to decrypt and encrypt email and 
+This is PGP encryption and decryption example, a security program used to decrypt and encrypt email,  
 authenticate email messages through digital signatures and file encryption.
 
 ## How to Run
