@@ -1,19 +1,15 @@
 # PGP Crypto Service
 
-This is the README file for the PGP Crypto Service application, a security program used to decrypt and encrypt email and 
+## Description
+This is PGP Crypto Service application, a security program used to decrypt and encrypt email and 
 authenticate email messages through digital signatures and file encryption.
 
-## Environment Variables
-
-### Spring Application Name
-
-- **Variable Name**: `SPRING_APPLICATION_TEST_NAME`
-- **Description**: Specifies the name of the Spring Boot Test application.
-
-### Camel Certificates
+## How to Run
+1. Clone the repository.
+2. Run `EncryptionTest` for unit tests.
+3. Run `DecryptionTest` for unit tests.
 
 #### Steps to Generate the Key Pairs:
-
 1. **Generate a Private Key:**
     - Use the following command to generate the keys:
       ```
